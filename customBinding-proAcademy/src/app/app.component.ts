@@ -6,9 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  value: string = 'recipe';
- 
-  onChange(feature: string){
-    this.value = feature;
-  }
+  title = 'customBinding-proAcademy';
 }
