@@ -1,5 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
-import { increment, decrement, reset, customIncrement } from "./counter.actions";
+import { Action } from "rxjs/internal/scheduler/Action";
+import { increment, decrement, reset, customIncrement, customChangeText } from "./counter.actions";
 import { intialState } from "./counter.state";
 
 export function counterReducer(state, action){
@@ -34,6 +35,13 @@ const _counterReducer = createReducer(
         return {
             ...state,
             counter: state.counter + action.value,
+        }
+    }),
+
+    on(customChangeText, (state) => {
+        return {
+            ...state,
+            text: "It has been updated!"
         }
     })
 )

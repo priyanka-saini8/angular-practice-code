@@ -23,6 +23,7 @@ export class CounterOutputComponent implements OnInit, OnDestroy {
     // this.counterSubscription = this.store.select('counter').subscribe(data => {
     //   this.counter = data.counter;
     // });
+    console.log("counter===")
     this.counter$ = this.store.select('counter');
   }
 
