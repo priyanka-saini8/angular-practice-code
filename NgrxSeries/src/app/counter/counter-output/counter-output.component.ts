@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
+import { getcounter } from '../state/counter.selector';
 import { CounterState } from '../state/counter.state';
 
 @Component({
@@ -12,9 +13,10 @@ import { CounterState } from '../state/counter.state';
 export class CounterOutputComponent implements OnInit, OnDestroy {
 
   // @Input() counter?: number;
-  counter: number;
+  // counter: number;
+  counter$: Observable<number>;
   counterSubscription: Subscription;
-  counter$: Observable<{ counter: number }>;
+  // counter$: Observable<{ counter: number }>;
 
   // constructor(private store: Store<{ counter: {counter: number}}>){}
   constructor( private store: Store<{ counter: CounterState}>){}
@@ -23,8 +25,15 @@ export class CounterOutputComponent implements OnInit, OnDestroy {
     // this.counterSubscription = this.store.select('counter').subscribe(data => {
     //   this.counter = data.counter;
     // });
-    console.log("counter===")
-    this.counter$ = this.store.select('counter');
+
+    // this.counterSubscription = this.store.select(getcounter).subscribe(counter => {
+    //   console.log("counter===")
+    //   this.counter = counter;
+    // });
+
+    // this.counter$ = this.store.select('counter');
+
+    this.counter$ = this.store.select(getcounter);
   }
 
   ngOnDestroy(){
@@ -33,3 +42,7 @@ export class CounterOutputComponent implements OnInit, OnDestroy {
   }
 
 }
+function getCounter(getCounter: any) {
+  throw new Error('Function not implemented.');
+}
+
